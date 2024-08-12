@@ -110,7 +110,14 @@ createAddress = async () => {
   await page.click("#fullAddress");
   await fullAddress.type(`${datafullAddress()}, ${data.dataKelurahan()}`);
 
-  await page.click("#agreement-checkbox");
+  await page.evaluate(() => {
+    window.scrollTo(0, document.body.scrollHeight), 2000;
+  });
+
+  const aggrement = await page.waitForSelector(
+    "xpath//html/body/div/div[2]/div/div[1]/div[2]/div[7]/label"
+  );
+  await aggrement.click();
 
   await page.click("xpath//html/body/div/div[2]/div/div[2]/button[2]");
   await console.log("Berhasil Create Address");

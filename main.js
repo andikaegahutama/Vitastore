@@ -1,7 +1,7 @@
 const doLogin = require("../Vitastore/case/login");
 const doRegist = require("../Vitastore/case/register");
 const doCreateAddress = require("./case/createAddress");
-// const doEditAddress = require("../Vitastore/case/editAddress");
+const doDeleteAddress = require("../Vitastore/case/deleteAddress");
 // const doDeleteAddress = require("../Vitastore/case/deleteAddress");
 const doAddCart = require("../Vitastore/case/addCart");
 const doAddOneEDX = require("../Vitastore/case/addOneEDX");
@@ -16,8 +16,8 @@ async function execute() {
   try {
     // await doLogin();
     // await doRegist();
-    await doCreateAddress();
-    // await doEditAddress();
+    // await doCreateAddress();
+    await doDeleteAddress();
     // await doDeleteAddress();
     // await doAddCart();
     // await doAddOneEDX();

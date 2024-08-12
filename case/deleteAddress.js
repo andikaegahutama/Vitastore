@@ -1,17 +1,12 @@
 const puppeteer = require("puppeteer");
 const Chance = require("chance");
 const chance = new Chance();
-const {
-  dataNama,
-  dataWhatsapp,
-  dataPin,
-  dataKelurahan,
-  datart,
-  datarw,
-  datafullAddress,
-} = require("../case/data/data");
+const { dataWhatsapp, dataPin } = require("./data/data");
+const data = require("./data/data");
+let number = [1, 2, 3, 4, 5, 6, 7, 8];
+let randomNumber = Math.floor(Math.random * number.length) + 1;
 
-deleteCustomer = async () => {
+deleteAddress = async () => {
   const browser = await puppeteer.launch({
     headless: false,
     args: [`--window-size=1920,1080`],
@@ -44,6 +39,21 @@ deleteCustomer = async () => {
     "xpath//html/body/div/div[2]/div[2]/div[3]/div[2]/a[1]"
   );
   await menuCustomer.click();
+
+  const ubahCustomer = await page.waitForSelector(
+    "xpath//html/body/div/div[2]/div[1]/div[2]/div[1]/div/button"
+  );
+  await ubahCustomer.click();
+
+  const deleteButton = await page.waitForSelector(
+    "xpath//html/body/div/div[2]/div/div[2]/button[1]"
+  );
+  await deleteButton.click();
+
+  const deleteSure = await page.waitForSelector(
+    "xpath//html/body/div[2]/div/div/div/div[2]/div/div/div[3]/button[2]"
+  );
+  await deleteSure.click();
 };
 
-module.exports = deleteCustomer;
+module.exports = deleteAddress;
